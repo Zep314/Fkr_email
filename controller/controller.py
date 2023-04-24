@@ -1,5 +1,5 @@
 from view.view import View
-from util.email import Email
+from util.my_email import Email
 
 
 class Controller:
@@ -9,4 +9,10 @@ class Controller:
 
     def run(self):
         print("Hi!")
-        self._email.send_message()
+        receive = 'mordanovda@mail.ru'
+#        attach = 'C:\\temp\\исходящий.pdf'
+        attach = '/home/dima/temp/Гибкие методологии04.pdf'
+
+        self._email.send_message(receive, attach)
+
+        print("Email sent successfully!")
