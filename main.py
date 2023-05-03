@@ -6,7 +6,6 @@ if __name__ == '__main__':
     controller = Controller()
     controller.run()
 
-
 # Подсказка на потом:
 # сделать exe-файл:
 

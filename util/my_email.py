@@ -2,12 +2,13 @@
 
 import smtplib
 import ssl
-import os
 from email.mime.multipart import MIMEMultipart
 from email.mime.base import MIMEBase
 from email.mime.text import MIMEText
 from email import encoders
 from email.utils import formataddr
+from re import sub
+
 
 from util.settings import Settings
 
@@ -75,7 +76,7 @@ class Email:
         msg['To'] = receiver
 
         with open(attach, 'rb') as file:  # вкладываем вложение
-            fn = os.path.basename(attach)
+            fn = sub(' +', ' ', attach).split('.')[-2].strip().split(' ')[-2] + '.pdf'
             part = MIMEBase('application', 'octet-stream')
             part.set_payload(file.read())
             encoders.encode_base64(part)
